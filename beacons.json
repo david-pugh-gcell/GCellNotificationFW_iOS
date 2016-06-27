@@ -2,10 +2,9 @@
     "beacons":[
                {
                "comment":"Example 1",
-               "UUID":"01E82601-8329-4BD6-A126-8A17B03D55EC",
+               "UUID":"A36AD2B5-0736-43FB-8572-63DB53886FF3",
                "major":200,
                "minor":108,
-               "show":1,
                "actions":   [
                              {
                              "actionName":"custom1",
@@ -21,11 +20,10 @@
                              ]
                },
                {
-               "comment":"Example 1",
-               "UUID":"01E82601-8329-4BD6-A126-8A17B03D55EC",
+               "comment":"Example 2",
+               "UUID":"96530d4d-09af-4159-b99e-951a5e826584",
                "major":100,
                "minor":1,
-               "show":1,
                "actions":   [
                              {
                              "actionName":"custom2",

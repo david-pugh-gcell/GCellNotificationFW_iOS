@@ -6,10 +6,18 @@
 //  Copyright © 2016 G24 Power Ltd David Pugh. All rights reserved.
 //
 
+
+/// TO SUCESSFULLY DETECT IBEACONS PLEASE ENSURE THAT THE INFO.PLIST HAS A ENTRY FOR NSLocationAlwaysUsageDescription
+// ALSO ENABLE BACKGROUND MODES AND Uses Bluetooth LE accessory
+
 import UIKit
 import GCBeaconNotificationFWv1
 import CoreLocation
 
+
+
+
+//Remember to adopt the GCBEaconManagerDelegate so we get the relevant call backs
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
@@ -30,17 +38,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Use auto notifications - reads beacons and notifcations from JSON files
-        beaconManager.debug = false
+        //Set debug to true to get more console feedback
+        beaconManager.debug = true
+        //Set the delegate so we receive callbacks
         beaconManager.delegate = self
         
         switch option{
             case 1:
+                //Use auto notifications - reads beacons and notifcations from JSON files
                 beaconManager.autoNotify = true
                 beaconManager.useDefaultBeaconRegion = false
                 beaconManager.startScanningForBeacons()
             break
-        case 2:
+            case 2:
+                //Use like standard CoreLocation ranging
                 //set the auto notify function OFF
                 beaconManager.autoNotify = false
                 
@@ -118,7 +129,7 @@ extension AppDelegate{
     }
     
     
-    //If using as a standard iBeacon deetctor, handle any didRange calls
+    //If using as a standard iBeacon detector, handle any didRange calls
     func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
         if option == 2{
             print("Ranged the following beacons in region \(region):")
