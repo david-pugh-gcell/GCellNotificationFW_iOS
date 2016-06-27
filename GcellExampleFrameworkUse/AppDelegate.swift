@@ -94,6 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
 extension AppDelegate{
     
     //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
+    
+    //These are the beacons that were ranged as part of the notification system
     func notificationBeaconsRanged(beacons: [GCBeacon]){
         print("Ranged the following listed beacons:")
         for b in beacons{
@@ -101,6 +103,8 @@ extension AppDelegate{
         }
         
     }
+    
+    //These are the custom action calls as part of the notification system
     func notificationActionsReceived(actions: Set<GCBeaconAction>){
         print("Actions Received:")
         for a in actions{
@@ -108,12 +112,13 @@ extension AppDelegate{
         }
     }
     
+    //Handle any feedback received from framework
     func errorMessage(error: Int, errorDesc: String) {
         print("Error! \(error) - \(errorDesc)")
     }
     
     
-    
+    //If using as a standard iBeacon deetctor, handle any didRange calls
     func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
         if option == 2{
             print("Ranged the following beacons in region \(region):")
