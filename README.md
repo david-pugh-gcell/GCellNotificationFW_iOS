@@ -162,7 +162,7 @@ Respond to the beacons ranged delegate call back.
 
 ```
 
-<h3>Backgrond Mode</h3>
+<h3>Background Mode</h3>
 The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this.  The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
 
 
