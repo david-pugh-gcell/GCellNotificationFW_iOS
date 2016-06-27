@@ -1,0 +1,39 @@
+{
+    "beacons":[
+               {
+               "comment":"Example 1",
+               "UUID":"01E82601-8329-4BD6-A126-8A17B03D55EC",
+               "major":200,
+               "minor":108,
+               "show":1,
+               "actions":   [
+                             {
+                             "actionName":"custom1",
+                             "minActionRssi": -55,
+                             "recurrance": 5
+                             },
+                             {
+                             "actionName":"custom3",
+                             "minActionRssi": -55,
+                             "recurrance": 10
+                             }
+                             
+                             ]
+               },
+               {
+               "comment":"Example 1",
+               "UUID":"01E82601-8329-4BD6-A126-8A17B03D55EC",
+               "major":100,
+               "minor":1,
+               "show":1,
+               "actions":   [
+                             {
+                             "actionName":"custom2",
+                             "minActionRssi": -55,
+                             "recurrance": 20
+                             }
+                             ]
+               }
+               
+               ]
+}
