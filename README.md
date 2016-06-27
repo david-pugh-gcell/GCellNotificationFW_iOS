@@ -82,7 +82,7 @@ var beaconManager = GCBeaconManager()
 Ensure that the class adopts the GCBeaconManagerDelegate protocol in its definition. Then set the delegate, switch on/off debugging, set autonotify to true and start scanning. 
 
 ```Swift
-beaconManager.debug = false
+beaconManager.debug = true
 beaconManager.delegate = self
 beaconManager.autoNotify = true
 beaconManager.useDefaultBeaconRegion = false
@@ -119,11 +119,13 @@ The app will chack permissions and settings, load up the beacos data, autoconfig
 ```
 
 <h4>Using Standard Scan</h4>
-This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
+This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remeber to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
 
 ```Swift
  //set the auto notify function OFF
                 beaconManager.autoNotify = false
+                beaconManager.debug = true
+                beaconManager.delegate = self
                 
                 //Set up beacon regions
                 let uuidString = "A36AD2B5-0736-43FB-8572-63DB53886FF3"
