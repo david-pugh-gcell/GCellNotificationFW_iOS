@@ -30,7 +30,7 @@ Firstly, create a list of which beacons you want to scan for, along with any act
 
 * The **actionName** is the string that is called when the action is triggered
 * The **minActionRssi** determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number the closer you will be to the beacon, e.g., -90dB would be approx 20m and -40dB would be 5m). 
-* The **reccurance** value is teh time in seconds between subsequent triggers. E.g., a value of 500 would mean the time between multiple actionName triggers would be 5 minutes (600 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. 
+* The **reccurance** value is the time in seconds between subsequent triggers. E.g., a value of 300 would mean the time between multiple actionName triggers would be 5 minutes (300 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. 
 
 ```json
 {
@@ -89,7 +89,7 @@ beaconManager.useDefaultBeaconRegion = false
 beaconManager.startScanningForBeacons()
 ```
 
-The app will chack permissions and settings, load up the beacos data, autoconfigure beacon regions and start scanning. It will return triggered actions and any error feedback messages through the GCBeaconManagerDelegate protocol.
+The app will chack permissions and settings, load up the beacons data, autoconfigure beacon regions and start scanning. It will return triggered actions and any error feedback messages through the GCBeaconManagerDelegate protocol.
 
 ```Swift
  //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
@@ -119,7 +119,7 @@ The app will chack permissions and settings, load up the beacos data, autoconfig
 ```
 
 <h4>Using Standard Scan</h4>
-This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remeber to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
+This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remember to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
 
 ```Swift
  //set the auto notify function OFF
@@ -160,7 +160,4 @@ Respond to the beacons ranged delegate call back.
 ```
 
 <h3>Background Mode</h3>
-The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this.  The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
-
-
-
+The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this. The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
