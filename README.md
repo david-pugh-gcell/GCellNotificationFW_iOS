@@ -151,13 +151,10 @@ Respond to the beacons ranged delegate call back.
     
     //Handel didRanging calls
     func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
-        if option == 2{
             print("Ranged the following beacons in region \(region):")
             for b in beacons{
                 print("\(b.major)/\(b.minor) with \(b.rssi)dB")
             }
-        }
-
     }
 
 ```
