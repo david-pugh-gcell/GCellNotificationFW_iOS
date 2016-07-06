@@ -11,7 +11,7 @@
 // ALSO ENABLE BACKGROUND MODES AND Uses Bluetooth LE accessory
 
 import UIKit
-import GCBeaconNotificationFWv1
+import GCBeaconNotificationFWv1_1
 import CoreLocation
 
 
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
     var beaconManager = GCBeaconManager()
     
     //Change option here to see different ways of work
-    var option = 2  //Use beacon.json data and notitifcations
+    var option = 1  //Use beacon.json data and notitifcations
                     // 2 is using code defined regions and getting standard CoreLocation didRange calls
     
     
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
                 let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
  
                 //Add the regions
-                beaconManager.addBeaconRegion(beaconRegion)//Leave this out to use teh default GCell UUID as the beacon region
+                beaconManager.addBeaconRegion(beaconRegion)//Leave this out to use the default GCell UUID as the beacon region
                 
                 //Start Scanning
                 beaconManager.startScanningForBeacons()
@@ -104,33 +104,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
 
 extension AppDelegate{
     
-    //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
     
-    //These are the beacons that were ranged as part of the notification system
-    func notificationBeaconsRanged(beacons: [GCBeacon]){
+    //MARK: beacon manager delegate update calls
+    
+    /**
+     Handle any errors returned from the beacon manager
+     */
+    func beaconManager(beaconManager: GCBeaconManager, errorCode: Int, with errorMessage: String) {
+        print("Error! \(errorCode) - \(errorMessage)")
+    }
+    
+    //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
+
+    
+    //MARK: Using Auto-notify
+    /**
+     Recieved list of beacons that are associated with notifications that have been triggered
+    */
+    func beaconManager(beaconManager: GCBeaconManager, didRangeNotificationBeacons beacons: [GCBeacon]) {
         print("Ranged the following listed beacons:")
         for b in beacons{
             print("\(b.major)/\(b.minor) with \(b.lastKnownRssi)dB at \(b.lastSeen)")
         }
-        
+
     }
     
-    //These are the custom action calls as part of the notification system
-    func notificationActionsReceived(actions: Set<GCBeaconAction>){
+    /**
+     These are the custom actions that were triggered when seeing the beacon
+     */
+    func beaconManager(beaconManager: GCBeaconManager, didReceiveNotificationActions actions: Set<GCBeaconAction>) {
         print("Actions Received:")
         for a in actions{
             print("\(a.actionName)")
         }
     }
     
-    //Handle any feedback received from framework
-    func errorMessage(error: Int, errorDesc: String) {
-        print("Error! \(error) - \(errorDesc)")
-    }
+
     
-    
-    //If using as a standard iBeacon detector, handle any didRange calls
-    func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
+    /**
+        If using as a standard iBeacon detector, handle any didRange calls as you would from CoreLocation
+     */
+    func beaconManager(beaconManager: GCBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         if option == 2{
             print("Ranged the following beacons in region \(region):")
             for b in beacons{
@@ -139,6 +153,9 @@ extension AppDelegate{
         }
 
     }
+    
+  
+
 
     
     

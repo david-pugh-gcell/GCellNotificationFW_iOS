@@ -8,25 +8,25 @@
 		<data>
 		RNvWySPuGP/dbreklGic1cY39TU=
 		</data>
-		<key>Headers/GCBeaconNotificationFWv1-Swift.h</key>
+		<key>Headers/GCBeaconNotificationFWv1_1-Swift.h</key>
 		<data>
-		4SeB4lAz1Waj0uiYuUw4SjYhmkA=
+		q6vXwgAPi5xTmw5xjQQB6Sh2YSk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		NmBdLsecYVnEE6SV/8mNf3BJW8k=
+		8gbeiOwup+1pRLXjxu6LGAPrQ0s=
 		</data>
-		<key>Modules/GCBeaconNotificationFWv1.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/GCBeaconNotificationFWv1_1.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		7BUlQBrhUQ77wbgVsUxliml4eHA=
+		eai8ObhLLinJvz8UNZBz8ZSKOKE=
 		</data>
-		<key>Modules/GCBeaconNotificationFWv1.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/GCBeaconNotificationFWv1_1.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		guVIklQx3Coe70uMu4fuO7XcpX4=
+		tpPUSaQDwA8wuTI0h8ioDIe1nI8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		zdsMuqoz5BnQWVjYKa9VgWAdCuw=
+		1LHDFVPUgIvNtsGVZJRamKcEZKU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -42,48 +42,48 @@
 			0YgzOM6L2xlWjXtGurHhHeIBlE5b5v0wOHXeTpkT2lo=
 			</data>
 		</dict>
-		<key>Headers/GCBeaconNotificationFWv1-Swift.h</key>
+		<key>Headers/GCBeaconNotificationFWv1_1-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4SeB4lAz1Waj0uiYuUw4SjYhmkA=
+			q6vXwgAPi5xTmw5xjQQB6Sh2YSk=
 			</data>
 			<key>hash2</key>
 			<data>
-			8EofFEx7nhZTHY8Q/C5O6VMdLTC2FOdO/apa7DgFkKI=
+			MfC4pkpWoj4MJQWeeQqS1MfWbQU3y0vHrW39uQAYO3I=
 			</data>
 		</dict>
-		<key>Modules/GCBeaconNotificationFWv1.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/GCBeaconNotificationFWv1_1.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7BUlQBrhUQ77wbgVsUxliml4eHA=
+			eai8ObhLLinJvz8UNZBz8ZSKOKE=
 			</data>
 			<key>hash2</key>
 			<data>
-			HsTmECpPnCMRxnb73uLJ1+KT7c6FmxT04MLIAz3OSiA=
+			UZbu1uTxbZN+QSsbarBu5yWRz0VVhwnoELpC64gNZx0=
 			</data>
 		</dict>
-		<key>Modules/GCBeaconNotificationFWv1.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/GCBeaconNotificationFWv1_1.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			guVIklQx3Coe70uMu4fuO7XcpX4=
+			tpPUSaQDwA8wuTI0h8ioDIe1nI8=
 			</data>
 			<key>hash2</key>
 			<data>
-			jrCxocWPxIAMqqykkT4cJ5gekRFLi9qrEUtkdbhFy04=
+			8vTYs0xa2RLAhwSvoITBbThJKNJiEt4rx8LKrWBxrBo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zdsMuqoz5BnQWVjYKa9VgWAdCuw=
+			1LHDFVPUgIvNtsGVZJRamKcEZKU=
 			</data>
 			<key>hash2</key>
 			<data>
-			i1oqzxYPdvIMtetyHGXDB3EMr2kA3YwZwsZDeS6/h4s=
+			c8GtRqtLiMzQb9kdKtL27fttGgZEYlOYn11VrPpiuks=
 			</data>
 		</dict>
 	</dict>

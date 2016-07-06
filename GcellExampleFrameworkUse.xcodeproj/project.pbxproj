@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F976B6A1D2D7BCB00E24456 /* GCBeaconNotificationFWv1_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F976B681D2D7BBD00E24456 /* GCBeaconNotificationFWv1_1.framework */; };
+		4F976B6B1D2D7BCB00E24456 /* GCBeaconNotificationFWv1_1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F976B681D2D7BBD00E24456 /* GCBeaconNotificationFWv1_1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4FC4D2F81D1D7B3B0058C237 /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FC4D2F71D1D7B3B0058C237 /* beacons.json */; };
-		4FC9DC181D216BA400E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC9DC171D216BA400E9C45C /* GCBeaconNotificationFWv1.framework */; };
-		4FC9DC1C1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC9DC1B1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework */; };
-		4FC9DC1D1D216E4300E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC9DC1B1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework */; };
-		4FC9DC1E1D216E4300E9C45C /* GCBeaconNotificationFWv1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC9DC1B1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4FF08E8D1D1D5827007010D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF08E8C1D1D5827007010D2 /* AppDelegate.swift */; };
 		4FF08E8F1D1D5827007010D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF08E8E1D1D5827007010D2 /* ViewController.swift */; };
 		4FF08E921D1D5827007010D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FF08E901D1D5827007010D2 /* Main.storyboard */; };
@@ -20,13 +18,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4FC4D2ED1D1D77700058C237 /* Embed Frameworks */ = {
+		4F976B6C1D2D7BCB00E24456 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4FC9DC1E1D216E4300E9C45C /* GCBeaconNotificationFWv1.framework in Embed Frameworks */,
+				4F976B6B1D2D7BCB00E24456 /* GCBeaconNotificationFWv1_1.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,9 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F976B681D2D7BBD00E24456 /* GCBeaconNotificationFWv1_1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GCBeaconNotificationFWv1_1.framework; sourceTree = "<group>"; };
 		4FC4D2F71D1D7B3B0058C237 /* beacons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = beacons.json; path = ../beacons.json; sourceTree = "<group>"; };
-		4FC9DC171D216BA400E9C45C /* GCBeaconNotificationFWv1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCBeaconNotificationFWv1.framework; path = "/Users/davidpugh/Documents/XCODE-Repository/GcellExampleFrameworkUse/GCBeaconNotificationFWv1.framework"; sourceTree = "<absolute>"; };
-		4FC9DC1B1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GCBeaconNotificationFWv1.framework; sourceTree = "<group>"; };
 		4FF08E891D1D5827007010D2 /* GcellExampleFrameworkUse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GcellExampleFrameworkUse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF08E8C1D1D5827007010D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FF08E8E1D1D5827007010D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,9 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC9DC181D216BA400E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */,
-				4FC9DC1D1D216E4300E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */,
-				4FC9DC1C1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework in Frameworks */,
+				4F976B6A1D2D7BCB00E24456 /* GCBeaconNotificationFWv1_1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +60,7 @@
 			children = (
 				4FF08E8B1D1D5827007010D2 /* GcellExampleFrameworkUse */,
 				4FF08E8A1D1D5827007010D2 /* Products */,
-				4FC9DC1B1D216E3D00E9C45C /* GCBeaconNotificationFWv1.framework */,
+				4F976B681D2D7BBD00E24456 /* GCBeaconNotificationFWv1_1.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +96,7 @@
 				4FF08E851D1D5827007010D2 /* Sources */,
 				4FF08E861D1D5827007010D2 /* Frameworks */,
 				4FF08E871D1D5827007010D2 /* Resources */,
-				4FC4D2ED1D1D77700058C237 /* Embed Frameworks */,
+				4F976B6C1D2D7BCB00E24456 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,7 +195,7 @@
 		4FF08E991D1D5827007010D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -245,7 +240,7 @@
 		4FF08E9A1D1D5827007010D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -287,9 +282,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/**",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/GcellExampleFrameworkUse/**",
-					"$(PROJECT_DIR)/GcellExampleFrameworkUse",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = GcellExampleFrameworkUse/Info.plist;
@@ -311,9 +305,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/**",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/GcellExampleFrameworkUse/**",
-					"$(PROJECT_DIR)/GcellExampleFrameworkUse",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = GcellExampleFrameworkUse/Info.plist;
