@@ -95,7 +95,7 @@ The app will chack permissions and settings, load up the beacons data, autoconfi
  //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
     
     //These are the beacons that were ranged as part of the notification system
-    func notificationBeaconsRanged(beacons: [GCBeacon]){
+    func beaconManager(beaconManager: GCBeaconManager, didRangeNotificationBeacons beacons: [GCBeacon]){
         print("Ranged the following listed beacons:")
         for b in beacons{
             print("\(b.major)/\(b.minor) with \(b.lastKnownRssi)dB at \(b.lastSeen)")
@@ -104,7 +104,7 @@ The app will chack permissions and settings, load up the beacons data, autoconfi
     }
     
     //These are the custom action calls as part of the notification system
-    func notificationActionsReceived(actions: Set<GCBeaconAction>){
+    func beaconManager(beaconManager: GCBeaconManager, didReceiveNotificationActions actions: Set<GCBeaconAction>) {
         print("Actions Received:")
         for a in actions{
             print("\(a.actionName)")
@@ -112,7 +112,7 @@ The app will chack permissions and settings, load up the beacons data, autoconfi
     }
     
     //Handle any feedback received from framework
-    func errorMessage(error: Int, errorDesc: String) {
+     func beaconManager(beaconManager: GCBeaconManager, errorCode: Int, with errorMessage: String) {
         print("Error! \(error) - \(errorDesc)")
     }
 
@@ -144,13 +144,13 @@ Respond to the beacons ranged delegate call back.
 
 ```Swift
     //Handle any feedback received from framework
-    func errorMessage(error: Int, errorDesc: String) {
+    func beaconManager(beaconManager: GCBeaconManager, errorCode: Int, with errorMessage: String) {
         print("Error! \(error) - \(errorDesc)")
     }
     
     
     //Handel didRanging calls
-    func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
+    func beaconManager(beaconManager: GCBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
             print("Ranged the following beacons in region \(region):")
             for b in beacons{
                 print("\(b.major)/\(b.minor) with \(b.rssi)dB")
