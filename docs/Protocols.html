@@ -73,7 +73,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The GCBeaconManagerDelegate protocol defines the methods used to receive iBeacon and prximity notification updates from a GCBeaconManager object.</p>
+                        <div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    David Pugh, G24 Power Ltd
+
+</div>
+
+<p>The GCBeaconManagerDelegate protocol defines the methods used to receive iBeacon and prximity notification updates from a GCBeaconManager object.</p>
 
 <p>Upon receiving a successful iBeacon or Notification update, you can use the result to update your user interface or perform other actions. You can use the stopScanningforBeacons method of GCBeaconManager to stop the iBeacon and notification services. The service will also return any errors found during scanning.
  The methods of your delegate object are called from the thread in which you started the corresponding manager services. That thread must itself have an active run loop, like the one found in your application’s main thread.</p>
