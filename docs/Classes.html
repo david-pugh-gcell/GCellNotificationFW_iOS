@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Classes  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Classes  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GCBeacon.html">GCBeacon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GCBeaconAction.html">GCBeaconAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GCBeaconManager.html">GCBeaconManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Classes</h1>
+            <p>The following classes are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C26GCBeaconNotificationFWv1_115GCBeaconManager"></a>
+                    <a name="//apple_ref/swift/Class/GCBeaconManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C26GCBeaconNotificationFWv1_115GCBeaconManager">GCBeaconManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    David Pugh, G24 Power Ltd
+
+</div>
+
+<p>The GCBeaconManager class is the central point for configuring the delivery of iBeacon and proximity based events to your app. You use an instance of this class to establish the parameters that determine when iBeacon and proximity notifcation events should be delivered and to start and stop the actual delivery of those events. 
+ A GCBeaconManager object provides support for the following iBeacon-related activities:</p>
+
+<ul>
+<li>Monitoring the status of the Bluetooth on the users devices (on and off).</li>
+<li>Handles all of the CoreLocation set up functionality.</li>
+<li>Checking and managing the Location Services permissions in iOS.</li>
+<li>Auto creation of beacon regions based on a supplied list of beacons (in beacons.json) OR adding user generated regions.</li>
+<li>Monitoring distinct beacon regions of interest and generating location events when the user enters or leaves those regions.</li>
+<li>Reporting the range to nearby beacons.</li>
+<li>If auto-notify is selected, monitoring beacons and deliverying custom action call events when the beacon signal strength and time since last call conditions are met.</li>
+<li>Handling notifiation and ranging updates while the app is in the background.</li>
+</ul>
+
+<p><a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2></p>
+
+<p>To configure and use a GCBeaconManager object to deliver events:</p>
+
+<p><li>Always ensure that Framework has been imported into your project, and that an appropriate <NSLocationAlwaysUsageDescription> has been added to the project info.plist
+The framework will check for - and request as appropriate - authorization to use location services and check to see whether the desired services are available as described in <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/doc/uid/TP40007125-CH3-SW72">Requesting Permission to Use Location Services</a>.</li>
+<li>Create an instance of the GCBeaconManager class and store a strong reference to it somewhere in your app.</li>
+<li>Keeping a strong reference to the location manager object is required until all tasks involving that object are complete. Because most beacon manager tasks run asynchronously, storing your beacon manager in a local variable is insufficient.</li>
+<li>Assign a custom object to the delegate property. This object must conform to the <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate Protocol</a>.</li>
+<li>Configure any additional properties relevant to the desired service, e.g., set <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a> = false</li>
+<li>Call the <a href="GCBeaconManager.html#/s:FC24GCBeaconNotificationFWv115GCBeaconManager23startScanningForBeaconsFT_T_">startScanningForBeacons</a> method to begin the delivery of events.</li>
+<li><p>All iBeacon and notifcation related updates are delivered to the associated delegate object, which is a custom object that you provide. For information about the delegate methods you use to receive events, see <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate Protocol</a> Reference.</p></li>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>[Auto-notify] parameter indicates if we should use beacons and notifications stored in beacons.json. If false the user should define and set the beaconRegions array manually. If <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> is set true, if no regions are set then a region based on the default GCell UUID will be used. If this is false the fraework will not scan for devices.</p></p>
+
+<p></div>
+<a href='#using-beacon-regions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using-beacon-regions'>Using Beacon Regions</h2></p>
+
+<p>The framework uses region-monitoring services to be notified when the user crosses a region-based boundary. Region monitoring here applies to beacon regions (represented by the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. Region monitoring is used to detect boundary crossings of the specified region and those boundary crossings are used to perform related tasks. For example, upon approaching a stadium the user could be welcomed to the game and be sent a link to the latest team news.</p>
+
+<p>If <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a>is enabled, the framework will load a list of beacons from the beacons.json file. It will then automatically generate the apporiate beacon regions to monitor and range. If auto-notify is disabled, you will need to supply a one or more regions for the framework to monitor. These can be generated using the GCBeaconRegion class, which extends the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. To generate a beacon region with the default GCell UUID just call the <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">gcellDefaultRegion</a> method, otherwise create a <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> by specifying a UUID, UUID and Major or UUID, Major and Minor as specified by GCBeaconRegion. Pass these regions to the GCBeaconManager object using addBeaconRegion method. The framework registers these regions and uses them then you start scanning.
+ If no regions are defined - either the reading of the beacons.json file failes OR no region is manually supplied, then the value of the <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> determines the framework behaviour. If set false, the framework will not scan to save battery power. If set true a beacon region using the default GCell UUID will be used.</p>
+
+<p><a href='#the-beacons-json-file' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='the-beacons-json-file'>The beacons.json File</h3></p>
+
+<p>If using <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a> then the project should contain a list of the beacons of interest in JSON format. This allows the developer to just add a file of beacons and the framework will automatically set up beacon regions as appropriate. In addition, each beacon can have an associate list of actions that should be called if certain criteria is met. These criteria are:
+ * Signal Strength (proximity) - by tuning the <q>minActionRssi</q> you can tune the approximate distance from the beacon the action to be triggered. A low value (-95) will casuse the action to be triggered as soon as the beacon is observed (approx 20m). BY lowering this value to say -50, you would need to be much closer to the beacon to see the notification.
+ * Time Interval - the <q>recurrance</q> value represents the time interval in seconds between subsequent triggers. A value of say 60 means triggers will not occur more than once a minute. This can be a useful way of minimising the numbe rof callbacks received.</p>
+
+<p>When an action is triggered, the framework delivers a Notification action through the <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate Protocol</a>. This will return the <q>actionName</q> which can be used to do whatever you want within the app.</p>
+
+<p>The format of the beacons.json file should be:</p>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"beacons"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                 </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"Example 1"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"UUID"</span><span class="p">:</span><span class="s2">"A36AD2B5-0736-43FB-8572-63DB53886FF3"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"major"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"minor"</span><span class="p">:</span><span class="mi">108</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"actions"</span><span class="p">:</span><span class="w">   </span><span class="p">[</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                             </span><span class="nt">"actionName"</span><span class="p">:</span><span class="s2">"custom1"</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"minActionRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-55</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"recurrance"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+                             </span><span class="p">},</span><span class="w">
+                             </span><span class="p">{</span><span class="w">
+                             </span><span class="nt">"actionName"</span><span class="p">:</span><span class="s2">"custom3"</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"minActionRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-55</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"recurrance"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+                             </span><span class="p">}</span><span class="w">
+
+                             </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                 </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"Example 2"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"UUID"</span><span class="p">:</span><span class="s2">"96530d4d-09af-4159-b99e-951a5e826584"</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"major"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"minor"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="nt">"actions"</span><span class="p">:</span><span class="w">   </span><span class="p">[</span><span class="w">
+                             </span><span class="p">{</span><span class="w">
+                             </span><span class="nt">"actionName"</span><span class="p">:</span><span class="s2">"custom2"</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"minActionRssi"</span><span class="p">:</span><span class="w"> </span><span class="mi">-55</span><span class="p">,</span><span class="w">
+                             </span><span class="nt">"recurrance"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+                             </span><span class="p">}</span><span class="w">
+                             </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+
+        </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a href='#monitoring-of-ibeacons-and-notifications-in-the-background' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='monitoring-of-ibeacons-and-notifications-in-the-background'>Monitoring of iBeacons and Notifications in the Background</h2></p>
+
+<p>Most location services are meant to be used while your app is in the foreground but some can also run in the background. In some cases, location events can even cause your app to be relaunched to process an event. To run most location services in the background, you need to enable the location updates background mode in the Capabilities tab of your Xcode project. For services that launch your app, you need to request (and be granted) “Always” authorization from the user.</p>
+
+<ul>
+<li>The standard location service delivers events normally while an app is running in the foreground. When your app is in the background, this service delivers events only when the location-updates background mode is enabled for the app. This service does not relaunch iOS apps that have been terminated.</li>
+<li>The region monitoring (entering and exiting a beacon region) service delivers events normally while an app is running in the foreground or background. For a terminated iOS app, this service relaunches the app to deliver events. Use of this service requires “Always” authorization from the user.</li>
+<li>Beacon ranging delivers events normally while an app is running in the foreground. When your app is in the background, this service delivers events only when the location-updates background mode is enabled for the app and the standard location service is running. The framework allows the app to range for beacons for approximately 3 minutes in the background. This service does not relaunch iOS apps that have been terminated.</li>
+<li>Enabling the location-updates background mode ensures that an app continues to receive location events while in the background. When the app moves to the background, the system adds the location-services indicator to the status bar to let the user know that an app is using location services. The system may still terminate the app at any time to reclaim its memory or other resources.</li>
+</ul>
+
+                        <a href="Classes/GCBeaconManager.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">GCBeaconManager</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">CLLocationManagerDelegate</span><span class="p">,</span> <span class="kt">CBPeripheralManagerDelegate</span> <span class="p">,</span> <span class="kt">GCBeaconNotifcationManagerDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C26GCBeaconNotificationFWv1_18GCBeacon"></a>
+                    <a name="//apple_ref/swift/Class/GCBeacon" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C26GCBeaconNotificationFWv1_18GCBeacon">GCBeacon</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    David Pugh, G24 Power Ltd
+
+</div>
+
+<p>The GCBeacon class represents a beacon that was encountered during region monitoring. You do not create instances of this class directly. The beacon manager object reports encountered beacons to its associated delegate object. You can use the information in a beacon object to identify which beacon was encountered.</p>
+
+<p>The identity of a beacon is defined by its proximityUUID, major, and minor properties.</p>
+
+                        <a href="Classes/GCBeacon.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GCBeacon</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C26GCBeaconNotificationFWv1_114GCBeaconAction"></a>
+                    <a name="//apple_ref/swift/Class/GCBeaconAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C26GCBeaconNotificationFWv1_114GCBeaconAction">GCBeaconAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    David Pugh, G24 Power Ltd
+
+</div>
+
+<p>The GCBeaconAction class represents an action that can be associated with a beacon that was encountered during region monitoring. You do not create instances of this class directly. The beacon manager object will evaluate if the action sshould be triggered when a beacon is ranged, and reports the beacon and its actions to its associated delegate object. You can use the information in an action object to identify which action should be performed.</p>
+
+<p>The identity of an action is defined by its ationName, and whether it should be used by its minActionRssi (in dB) and actionReoccurance (in seconds) values</p>
+
+                        <a href="Classes/GCBeaconAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GCBeaconAction</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

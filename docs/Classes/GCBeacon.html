@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GCBeacon Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/GCBeacon" class="dashAnchor"></a>
+    <a title="GCBeacon Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GCBeacon Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeacon.html">GCBeacon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeaconAction.html">GCBeaconAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeaconManager.html">GCBeaconManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GCBeacon</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GCBeacon</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span></code></pre>
+
+                </div>
+              </div>
+            <div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    David Pugh, G24 Power Ltd
+
+</div>
+
+<p>The GCBeacon class represents a beacon that was encountered during region monitoring. You do not create instances of this class directly. The beacon manager object reports encountered beacons to its associated delegate object. You can use the information in a beacon object to identify which beacon was encountered.</p>
+
+<p>The identity of a beacon is defined by its proximityUUID, major, and minor properties.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Identifying%20the%20beacon"></a>
+                <a name="//apple_ref/swift/Section/Identifying the beacon" class="dashAnchor"></a>
+                <a href="#/Identifying%20the%20beacon">
+                  <h3 class="section-name">Identifying the beacon</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon5labelSS"></a>
+                    <a name="//apple_ref/swift/Property/label" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon5labelSS">label</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>label for the beacon</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">label</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon10uuidStringSS"></a>
+                    <a name="//apple_ref/swift/Property/uuidString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon10uuidStringSS">uuidString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the beacon UUID in string format</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">uuidString</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon4uuidCSo6NSUUID"></a>
+                    <a name="//apple_ref/swift/Property/uuid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon4uuidCSo6NSUUID">uuid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the beacon UUID in NSUUID format</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">uuid</span><span class="p">:</span> <span class="kt">NSUUID</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon5majorCSo8NSNumber"></a>
+                    <a name="//apple_ref/swift/Property/major" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon5majorCSo8NSNumber">major</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major number of the beacon (read only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">major</span><span class="p">:</span> <span class="kt">NSNumber</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon5minorCSo8NSNumber"></a>
+                    <a name="//apple_ref/swift/Property/minor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon5minorCSo8NSNumber">minor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor number of the beacon (read only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">minor</span><span class="p">:</span> <span class="kt">NSNumber</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Beacon%20ranging%20information"></a>
+                <a name="//apple_ref/swift/Section/Beacon ranging information" class="dashAnchor"></a>
+                <a href="#/Beacon%20ranging%20information">
+                  <h3 class="section-name">Beacon ranging information</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon13lastKnownRssiSi"></a>
+                    <a name="//apple_ref/swift/Property/lastKnownRssi" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon13lastKnownRssiSi">lastKnownRssi</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>RSSI value of beacon when last seen</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lastKnownRssi</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC26GCBeaconNotificationFWv1_18GCBeacon8lastSeenCSo6NSDate"></a>
+                    <a name="//apple_ref/swift/Property/lastSeen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC26GCBeaconNotificationFWv1_18GCBeacon8lastSeenCSo6NSDate">lastSeen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date value of beacon when last seen</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lastSeen</span><span class="p">:</span> <span class="kt">NSDate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Copy"></a>
+                <a name="//apple_ref/swift/Section/Copy" class="dashAnchor"></a>
+                <a href="#/Copy">
+                  <h3 class="section-name">Copy</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC26GCBeaconNotificationFWv1_18GCBeacon12copyWithZoneFV10ObjectiveC6NSZonePs9AnyObject_"></a>
+                    <a name="//apple_ref/swift/Method/copyWithZone(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_18GCBeacon12copyWithZoneFV10ObjectiveC6NSZonePs9AnyObject_">copyWithZone(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copy</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">copyWithZone</span><span class="p">(</span><span class="nv">zone</span><span class="p">:</span> <span class="kt">NSZone</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

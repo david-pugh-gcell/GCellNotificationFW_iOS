@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GCBeacon.html">GCBeacon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GCBeaconAction.html">GCBeaconAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GCBeaconManager.html">GCBeaconManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate"></a>
+                    <a name="//apple_ref/swift/Protocol/GCBeaconManagerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate">GCBeaconManagerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The GCBeaconManagerDelegate protocol defines the methods used to receive iBeacon and prximity notification updates from a GCBeaconManager object.</p>
+
+<p>Upon receiving a successful iBeacon or Notification update, you can use the result to update your user interface or perform other actions. You can use the stopScanningforBeacons method of GCBeaconManager to stop the iBeacon and notification services. The service will also return any errors found during scanning.
+ The methods of your delegate object are called from the thread in which you started the corresponding manager services. That thread must itself have an active run loop, like the one found in your application’s main thread.</p>
+
+<p><a href='#error-codes-corresponding-to-the-gcbeaconmanagerprotocol-protocol' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='error-codes-corresponding-to-the-gcbeaconmanagerprotocol-protocol'>Error codes corresponding to the GCBeaconManagerProtocol Protocol</h2></p>
+
+<p>If there are any issues the service will return an error with an appropriate code and description. These are summarised below:</p>
+
+<ul>
+<li>1  - Error with Location manager - Error message fed back in Desc</li>
+<li>10 - SW/HW settings or availability issue, eg, BLE switched off or Location Services OFF</li>
+<li>20 - LocationSevices Permissions issue</li>
+<li>30 - Monioring failed for region</li>
+<li>40 - Ranging Failed for region</li>
+<li>50 - Beacon JSON file import error</li>
+<li>60 - No Beacon Regions Defined</li>
+<li>70 - no Beacon.json file found</li>
+</ul>
+
+                        <a href="Protocols/GCBeaconManagerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GCBeaconManagerDelegate</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

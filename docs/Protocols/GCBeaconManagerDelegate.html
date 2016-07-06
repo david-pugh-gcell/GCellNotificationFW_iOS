@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GCBeaconManagerDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/GCBeaconManagerDelegate" class="dashAnchor"></a>
+    <a title="GCBeaconManagerDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GCBeaconManagerDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeacon.html">GCBeacon</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeaconAction.html">GCBeaconAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GCBeaconManager.html">GCBeaconManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GCBeaconManagerDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GCBeaconManagerDelegate</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+
+                </div>
+              </div>
+            <p>The GCBeaconManagerDelegate protocol defines the methods used to receive iBeacon and prximity notification updates from a GCBeaconManager object.</p>
+
+<p>Upon receiving a successful iBeacon or Notification update, you can use the result to update your user interface or perform other actions. You can use the stopScanningforBeacons method of GCBeaconManager to stop the iBeacon and notification services. The service will also return any errors found during scanning.
+ The methods of your delegate object are called from the thread in which you started the corresponding manager services. That thread must itself have an active run loop, like the one found in your application’s main thread.</p>
+
+<p><a href='#error-codes-corresponding-to-the-gcbeaconmanagerprotocol-protocol' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='error-codes-corresponding-to-the-gcbeaconmanagerprotocol-protocol'>Error codes corresponding to the GCBeaconManagerProtocol Protocol</h2></p>
+
+<p>If there are any issues the service will return an error with an appropriate code and description. These are summarised below:</p>
+
+<ul>
+<li>1  - Error with Location manager - Error message fed back in Desc</li>
+<li>10 - SW/HW settings or availability issue, eg, BLE switched off or Location Services OFF</li>
+<li>20 - LocationSevices Permissions issue</li>
+<li>30 - Monioring failed for region</li>
+<li>40 - Ranging Failed for region</li>
+<li>50 - Beacon JSON file import error</li>
+<li>60 - No Beacon Regions Defined</li>
+<li>70 - no Beacon.json file found</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Region%20Handling%20callbacks"></a>
+                <a name="//apple_ref/swift/Section/Region Handling callbacks" class="dashAnchor"></a>
+                <a href="#/Region%20Handling%20callbacks">
+                  <h3 class="section-name">Region Handling callbacks</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager14didEnterRegionCSo14CLBeaconRegion_T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didEnterRegion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager14didEnterRegionCSo14CLBeaconRegion_T_">beaconManager(_:didEnterRegion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that the user entered the specified region.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter region: An object containing information about the region that was entered.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didEnterRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>region</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object containing information about the region that was entered.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager13didExitRegionCSo14CLBeaconRegion_T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didExitRegion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager13didExitRegionCSo14CLBeaconRegion_T_">beaconManager(_:didExitRegion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that the user exited the specified region.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter region: An object containing information about the region that was exited.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didExitRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>region</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object containing information about the region that was exited.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager15didRangeBeaconsGSaCSo8CLBeacon_8inRegionCSo14CLBeaconRegion_T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didRangeBeacons:inRegion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager15didRangeBeaconsGSaCSo8CLBeacon_8inRegionCSo14CLBeaconRegion_T_">beaconManager(_:didRangeBeacons:inRegion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that one or more beacons are in range.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter beacons: An array of <a href="../Classes/GCBeacon.html">GCBeacon</a> objects representing the beacons currently in range. If beacons is empty, you can assume that no beacons matching the specified region are in range. When a specific beacon is no longer in beacons, that beacon is no longer received by the device. You can use the information in the GCBeacon objects to determine the range of each beacon and its identifying information.
+- parameter region: An object containing information about the region that was entered.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didRangeBeacons</span> <span class="nv">beacons</span><span class="p">:</span> <span class="p">[</span><span class="kt">CLBeacon</span><span class="p">],</span> <span class="n">inRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beacons</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of  objects representing the beacons currently in range. If beacons is empty, you can assume that no beacons matching the specified region are in range. When a specific beacon is no longer in beacons, that beacon is no longer received by the device. You can use the information in the GCBeacon objects to determine the range of each beacon and its identifying information.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>region</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object containing information about the region that was entered.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Notification%20Handling%20callbacks"></a>
+                <a name="//apple_ref/swift/Section/Notification Handling callbacks" class="dashAnchor"></a>
+                <a href="#/Notification%20Handling%20callbacks">
+                  <h3 class="section-name">Notification Handling callbacks</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager27didRangeNotificationBeaconsGSaCS_8GCBeacon__T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didRangeNotificationBeacons:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager27didRangeNotificationBeaconsGSaCS_8GCBeacon__T_">beaconManager(_:didRangeNotificationBeacons:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that one or more proximity based notification actions were recieved.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter beacons: An array of <a href="../Classes/GCBeacon.html">GCBeacon</a> objects representing the beacons currently in range and meeting the notifcation criteria (signal strength and time since last notification). You can use the information in the GCBeacon objects to determine the range of each beacon and its identifying information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didRangeNotificationBeacons</span> <span class="nv">beacons</span><span class="p">:</span> <span class="p">[</span><span class="kt">GCBeacon</span><span class="p">]</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beacons</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of  objects representing the beacons currently in range and meeting the notifcation criteria (signal strength and time since last notification). You can use the information in the GCBeacon objects to determine the range of each beacon and its identifying information.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager29didReceiveNotificationActionsGVs3SetCS_14GCBeaconAction__T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didReceiveNotificationActions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager29didReceiveNotificationActionsGVs3SetCS_14GCBeaconAction__T_">beaconManager(_:didReceiveNotificationActions:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that one or more proximity based notification actions were recieved.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter actions: An array of <a href="../Classes/GCBeaconAction.html">GCBeaconActions</a> objects representing the notification actions recieved. You can use the information in the GCBeaconAction objects to determine the action the notifcation is calling, e.g., the calling action name can be used to trigger certain events.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didReceiveNotificationActions</span> <span class="nv">actions</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">GCBeaconAction</span><span class="o">&gt;</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>actions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of  objects representing the notification actions recieved. You can use the information in the GCBeaconAction objects to determine the action the notifcation is calling, e.g., the calling action name can be used to trigger certain events.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Error%20Handling%20callbacks"></a>
+                <a name="//apple_ref/swift/Section/Error Handling callbacks" class="dashAnchor"></a>
+                <a href="#/Error%20Handling%20callbacks">
+                  <h3 class="section-name">Error Handling callbacks</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager24didChangeBluetoothStatusSb_T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:didChangeBluetoothStatus:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager24didChangeBluetoothStatusSb_T_">beaconManager(_:didChangeBluetoothStatus:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that the device changed the Bluetooth status.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter errorCode: An integer representing the error type recieved
+- parameter errorString: An string description of the error</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="n">didChangeBluetoothStatus</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An integer representing the error type recieved</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An string description of the error</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager9errorCodeSi4withSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/beaconManager(_:errorCode:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP26GCBeaconNotificationFWv1_123GCBeaconManagerDelegate13beaconManagerFTCS_15GCBeaconManager9errorCodeSi4withSS_T_">beaconManager(_:errorCode:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that an error was recieved.
+- parameter beaconManager: The GCBeaconManager object reporting the event
+- parameter errorCode: An integer representing the error type recieved
+- parameter errorString: An string description of the error</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">beaconManager</span><span class="p">(</span><span class="nv">beaconManager</span><span class="p">:</span> <span class="kt">GCBeaconManager</span><span class="p">,</span> <span class="nv">errorCode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">with</span> <span class="nv">errorMessage</span><span class="p">:</span> <span class="kt">String</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The GCBeaconManager object reporting the event</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An integer representing the error type recieved</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>errorString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An string description of the error</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-06)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
