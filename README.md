@@ -1,16 +1,18 @@
-# GCellNotificationFWv1 for iOS
+# GCellNotificationFW for iOS
 This project is an example XCode project that uses the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons. It is written in Swift (XCode 7.3).
 
 For more information about iBeacons, potential applications, the Framework and other software support such as platforms please contact us at [GCell ibeacon.solar](www.ibeacon.solar).
 
+Latest version: v1_1 (06 July 2016)
+
 <h3>Description</h3>
 
-This is an example XCode iOS app written in Swift that uses the GCellNotificationFWv_1 Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically manages permissions, detecting Bluetooth state and manages Beacon Regions. 
+This is an example XCode iOS app written in Swift that uses the GCellNotificationFW Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically manages permissions, detecting Bluetooth state and manages Beacon Regions. 
 
 <h3>Using the Framework</h3>
 
 Importing the Framework into your XCode Project
-1. Drag the GCellNotificationFWv_1 framework into your XCode Project
+1. Drag the GCellNotificationFWv1_1 framework into your XCode Project
 2. Click on your project target ->General and also add the framework to the Embedded Binaries
 3. Clean and rebuild the project - the classes in the framework should now be avilable to use
 
