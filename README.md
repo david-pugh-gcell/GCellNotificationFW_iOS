@@ -5,7 +5,7 @@ For more information about iBeacons, potential applications, the Framework and o
 
 <h3>Description</h3>
 
-This is an example XCode iOS app written in Swift that uses the GCellNotificationFWv_1 Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically mannages permissions, deetcting Bluetooth state and manages Beacon Regions. 
+This is an example XCode iOS app written in Swift that uses the GCellNotificationFWv_1 Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically manages permissions, detecting Bluetooth state and manages Beacon Regions. 
 
 <h3>Using the Framework</h3>
 
@@ -30,7 +30,7 @@ Firstly, create a list of which beacons you want to scan for, along with any act
 
 * The **actionName** is the string that is called when the action is triggered
 * The **minActionRssi** determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number the closer you will be to the beacon, e.g., -90dB would be approx 20m and -40dB would be 5m). 
-* The **reccurance** value is teh time in seconds between subsequent triggers. E.g., a value of 500 would mean the time between multiple actionName triggers would be 5 minutes (600 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. 
+* The **reccurance** value is the time in seconds between subsequent triggers. E.g., a value of 300 would mean the time between multiple actionName triggers would be 5 minutes (300 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. 
 
 ```json
 {
@@ -89,13 +89,13 @@ beaconManager.useDefaultBeaconRegion = false
 beaconManager.startScanningForBeacons()
 ```
 
-The app will chack permissions and settings, load up the beacos data, autoconfigure beacon regions and start scanning. It will return triggered actions and any error feedback messages through the GCBeaconManagerDelegate protocol.
+The app will chack permissions and settings, load up the beacons data, autoconfigure beacon regions and start scanning. It will return triggered actions and any error feedback messages through the GCBeaconManagerDelegate protocol.
 
 ```Swift
  //You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons
     
     //These are the beacons that were ranged as part of the notification system
-    func notificationBeaconsRanged(beacons: [GCBeacon]){
+    func beaconManager(beaconManager: GCBeaconManager, didRangeNotificationBeacons beacons: [GCBeacon]){
         print("Ranged the following listed beacons:")
         for b in beacons{
             print("\(b.major)/\(b.minor) with \(b.lastKnownRssi)dB at \(b.lastSeen)")
@@ -104,7 +104,7 @@ The app will chack permissions and settings, load up the beacos data, autoconfig
     }
     
     //These are the custom action calls as part of the notification system
-    func notificationActionsReceived(actions: Set<GCBeaconAction>){
+    func beaconManager(beaconManager: GCBeaconManager, didReceiveNotificationActions actions: Set<GCBeaconAction>) {
         print("Actions Received:")
         for a in actions{
             print("\(a.actionName)")
@@ -112,14 +112,14 @@ The app will chack permissions and settings, load up the beacos data, autoconfig
     }
     
     //Handle any feedback received from framework
-    func errorMessage(error: Int, errorDesc: String) {
+     func beaconManager(beaconManager: GCBeaconManager, errorCode: Int, with errorMessage: String) {
         print("Error! \(error) - \(errorDesc)")
     }
 
 ```
 
 <h4>Using Standard Scan</h4>
-This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remeber to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
+This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remember to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. 
 
 ```Swift
  //set the auto notify function OFF
@@ -144,23 +144,20 @@ Respond to the beacons ranged delegate call back.
 
 ```Swift
     //Handle any feedback received from framework
-    func errorMessage(error: Int, errorDesc: String) {
+    func beaconManager(beaconManager: GCBeaconManager, errorCode: Int, with errorMessage: String) {
         print("Error! \(error) - \(errorDesc)")
     }
     
     
     //Handel didRanging calls
-    func beaconsRanged(manager: GCBeaconManager, beacons: [CLBeacon], region: CLBeaconRegion){
-        if option == 2{
+    func beaconManager(beaconManager: GCBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
             print("Ranged the following beacons in region \(region):")
             for b in beacons{
                 print("\(b.major)/\(b.minor) with \(b.rssi)dB")
             }
-        }
-
     }
 
 ```
 
-
-
+<h3>Background Mode</h3>
+The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this. The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
