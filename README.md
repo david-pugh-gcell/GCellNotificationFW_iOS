@@ -5,6 +5,9 @@ For more information about iBeacons, potential applications, the Framework and o
 
 Latest version: v1_1 (06 July 2016)
 
+<h2>Full Documentation</h2>
+For full documentation please see the repository [docs](http://htmlpreview.github.com/?https://github.com/david-pugh-gcell/GCellNotificationFW_iOS/blob/master/docs/index.html)
+
 <h3>Description</h3>
 
 This is an example XCode iOS app written in Swift that uses the GCellNotificationFW Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically manages permissions, detecting Bluetooth state and manages Beacon Regions. 
