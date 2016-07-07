@@ -6,7 +6,7 @@ For more information about iBeacons, potential applications, the Framework and o
 Latest version: v1_1 (06 July 2016)
 
 <h2>Full Documentation</h2>
-For full documentation please see the repository [docs](http://htmlpreview.github.com/?https://github.com/david-pugh-gcell/GCellNotificationFW_iOS/blob/master/docs/index.html)
+For full documentation please see the repository [docs](https://htmlpreview.github.io/?https://raw.githubusercontent.com/david-pugh-gcell/GCellNotificationFW_iOS/master/docs/Classes/GCBeaconManager.html).
 
 <h3>Description</h3>
 
