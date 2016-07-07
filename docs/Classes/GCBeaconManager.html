@@ -103,7 +103,7 @@ The framework will check for - and request as appropriate - authorization to use
 
 <p>The framework uses region-monitoring services to be notified when the user crosses a region-based boundary. Region monitoring here applies to beacon regions (represented by the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. Region monitoring is used to detect boundary crossings of the specified region and those boundary crossings are used to perform related tasks. For example, upon approaching a stadium the user could be welcomed to the game and be sent a link to the latest team news.</p>
 
-<p>If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> is enabled, the framework will load a list of beacons from the beacons.json file. It will then automatically generate the apporiate beacon regions to monitor and range. If auto-notify is disabled, you will need to supply a one or more regions for the framework to monitor. These can be generated using the GCBeaconRegion class, which extends the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. To generate a beacon region with the default GCell UUID just call the <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager18gcellDefaultRegionFT_CSo14CLBeaconRegion">gcellDefaultRegion</a> method, otherwise create a <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> by specifying a UUID, UUID and Major or UUID, Major and Minor as specified by GCBeaconRegion. Pass these regions to the GCBeaconManager object using addBeaconRegion method. The framework registers these regions and uses them then you start scanning.
+<p>If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> is enabled, the framework will load a list of beacons from the beacons.json file. It will then automatically generate the apporiate beacon regions to monitor and range. If auto-notify is disabled, you will need to supply a one or more regions for the framework to monitor. These can be generated using the GCBeaconRegion class, which extends the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. To generate a beacon region with the default GCell UUID just call the <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager18gcellDefaultRegionFT_CSo14CLBeaconRegion">gcellDefaultRegion</a> method, otherwise create a <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> by specifying a UUID, UUID and Major or UUID, Major and Minor as specified by GCBeaconRegion. Pass these regions to the GCBeaconManager object using <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15addBeaconRegionFCSo14CLBeaconRegionT_">addBeaconRegion</a> method. The framework registers these regions and uses them then you start scanning.
  If no regions are defined - either the reading of the beacons.json file failes OR no region is manually supplied, then the value of the <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> determines the framework behaviour. If set false, the framework will not scan to save battery power. If set true a beacon region using the default GCell UUID will be used.</p>
 
 <p><a href='#the-beacons-json-file' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='the-beacons-json-file'>The beacons.json File</h3></p>
@@ -298,7 +298,7 @@ The framework will check for - and request as appropriate - authorization to use
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>an array of beaconRegions that the app will scan for</p>
+                        <p>An array of <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> objects that the app will scan for. You can either supply an array to this parameter directly or add individual regions using <a href="../Classes/GCBeaconManager.html#/">addBeaconRegion</a>. If using <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb)">autoNotify</a> = true, these regions are automatically created and assigned.</p>
 
                       </div>
                       <div class="declaration">
@@ -386,8 +386,7 @@ The framework will check for - and request as appropriate - authorization to use
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Function to add a new beacon region 
-- Parameters:
-- beaconRegion - a Core Location CLBeaconRegion</p>
+- Parameter beaconRegion: a Core Location CLBeaconRegion</p>
 
                       </div>
                       <div class="declaration">
@@ -397,6 +396,26 @@ The framework will check for - and request as appropriate - authorization to use
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addBeaconRegion</span><span class="p">(</span><span class="nv">beaconRegion</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>beaconRegion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a Core Location CLBeaconRegion</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -452,18 +471,23 @@ The framework will check for - and request as appropriate - authorization to use
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This function starts scanning for nearby iBeacons with the regions defined in beaconRegions</p>
+                        <p>This function starts scanning for nearby iBeacons with the regions defined in <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager13beaconRegionsGSaCSo14CLBeaconRegion_">beaconRegions</a></p>
 
-<p><a href='#warning' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='warning'>Warning</h4></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Bluetooth Low Energy needs to be ON to search for iBeacons
 
-<p>Bluetooth Low Energy needs to be ON to search for iBeacons</p>
+</div>
 
-<p><a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='usage'>Usage</h4></p>
+<p><a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='usage'>Usage:</h3></p>
 
-<p>Call to start scanning for iBeacons, The Beacon regions to scan can be set in anumber of ways:
-* Setting autoNotify to true means the app will use the beacons listed in teh beacons.json file to define appropriate regions automatically
-* If autoNatifiy is false, you can create your own beacon regions as you would for CoreLocation and add then to beaconRegions <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html">https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html</a>
-* If useDefaultBeaconRegion is true, then if beacons.json is missing, there has been an error or no regions are defined, then a beacon region corresponding to the default GCell UUID will be used.</p>
+<p>Call to start scanning for iBeacons, The Beacon regions to scan can be set in anumber of ways:</p>
+
+<ul>
+<li>Setting <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> to true means the app will use the beacons listed in the beacons.json file to define appropriate regions automatically</li>
+<li>If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> is false, you can create your own beacon regions as you would for <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html">CoreLocation CLBeaconRegion</a> and add using <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15addBeaconRegionFCSo14CLBeaconRegionT_">addBeaconRegion</a></li>
+<li>If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> is true, then if beacons.json is missing, there has been an error or no regions are defined, then a beacon region corresponding to the default GCell UUID will be used.</li>
+</ul>
 
                       </div>
                       <div class="declaration">
