@@ -14,10 +14,7 @@ import UIKit
 import GCBeaconNotificationFWv1_1
 import CoreLocation
 
-
-
-
-//Remember to adopt the GCBEaconManagerDelegate so we get the relevant call backs
+//Remember to adopt the GCBeaconManagerDelegate so we get the relevant call backs
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
@@ -52,20 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GCBeaconManagerDelegate{
             break
             case 2:
                 //Use like standard CoreLocation ranging
+                
                 //set the auto notify function OFF
                 beaconManager.autoNotify = false
                 
+                //If beaconManager.useDefaultBeaconRegion = true you can just start scanning for beacons with the Default GCell UUID.
+                // In this case there is no need to add any regions to the beaconManager, just go straight to beaconManager.startScanningForBeacons()
                 
-                //Set up beacon regions
+                //Or you can always generate one with the default GCell UUID at anyy time using
+                let gcellBeaconRegion = beaconManager.gcellDefaultRegion()
+                
+                //Or you can set up your own beacon regions and add them
                 let uuidString = "A36AD2B5-0736-43FB-8572-63DB53886FF3"
-                let beaconIdentifier = "iBeaconModules.us"
+                let beaconIdentifier = "iBeaconRegionExample.us"
                 let beaconUUID:NSUUID = NSUUID(UUIDString: uuidString)!
                 let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
- 
-                //Add the regions
-                beaconManager.addBeaconRegion(beaconRegion)//Leave this out to use the default GCell UUID as the beacon region
                 
-                //Start Scanning
+                //Add the regions
+                beaconManager.addBeaconRegion(beaconRegion)
+                
+                //Then Start Scanning
                 beaconManager.startScanningForBeacons()
                 
             break

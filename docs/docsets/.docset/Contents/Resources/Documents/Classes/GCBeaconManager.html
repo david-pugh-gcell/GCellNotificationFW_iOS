@@ -14,7 +14,8 @@
     <a title="GCBeaconManager Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p><a href="../index.html"> Docs</a></p>
+        <p class="header-right"><a href="https://github.com/david-pugh-gcell/GCellNotificationFW_iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -90,24 +91,24 @@ The framework will check for - and request as appropriate - authorization to use
 <li>Create an instance of the GCBeaconManager class and store a strong reference to it somewhere in your app.</li>
 <li>Keeping a strong reference to the location manager object is required until all tasks involving that object are complete. Because most beacon manager tasks run asynchronously, storing your beacon manager in a local variable is insufficient.</li>
 <li>Assign a custom object to the delegate property. This object must conform to the <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate Protocol</a>.</li>
-<li>Configure any additional properties relevant to the desired service, e.g., set <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a> = false</li>
-<li>Call the <a href="GCBeaconManager.html#/s:FC24GCBeaconNotificationFWv115GCBeaconManager23startScanningForBeaconsFT_T_">startScanningForBeacons</a> method to begin the delivery of events.</li>
+<li>Configure any additional properties relevant to the desired service, e.g., set <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> = false</li>
+<li>Call the <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager23startScanningForBeaconsFT_T_">startScanningForBeacons</a> method to begin the delivery of events.</li>
 <li><p>All iBeacon and notifcation related updates are delivered to the associated delegate object, which is a custom object that you provide. For information about the delegate methods you use to receive events, see <a href="../Protocols/GCBeaconManagerDelegate.html">GCBeaconManagerDelegate Protocol</a> Reference.</p></li>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
-    <p>[Auto-notify] parameter indicates if we should use beacons and notifications stored in beacons.json. If false the user should define and set the beaconRegions array manually. If <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> is set true, if no regions are set then a region based on the default GCell UUID will be used. If this is false the fraework will not scan for devices.</p></p>
+    <p>The <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> parameter indicates if we should use beacons and notifications stored in beacons.json. If false the user should define and set the beaconRegions array manually. If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> is set true, if no regions are set then a region based on the default GCell UUID will be used. If this is false the fraework will not scan for devices.</p></p>
 
 <p></div>
 <a href='#using-beacon-regions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using-beacon-regions'>Using Beacon Regions</h2></p>
 
 <p>The framework uses region-monitoring services to be notified when the user crosses a region-based boundary. Region monitoring here applies to beacon regions (represented by the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. Region monitoring is used to detect boundary crossings of the specified region and those boundary crossings are used to perform related tasks. For example, upon approaching a stadium the user could be welcomed to the game and be sent a link to the latest team news.</p>
 
-<p>If <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a>is enabled, the framework will load a list of beacons from the beacons.json file. It will then automatically generate the apporiate beacon regions to monitor and range. If auto-notify is disabled, you will need to supply a one or more regions for the framework to monitor. These can be generated using the GCBeaconRegion class, which extends the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. To generate a beacon region with the default GCell UUID just call the <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">gcellDefaultRegion</a> method, otherwise create a <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> by specifying a UUID, UUID and Major or UUID, Major and Minor as specified by GCBeaconRegion. Pass these regions to the GCBeaconManager object using addBeaconRegion method. The framework registers these regions and uses them then you start scanning.
- If no regions are defined - either the reading of the beacons.json file failes OR no region is manually supplied, then the value of the <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> determines the framework behaviour. If set false, the framework will not scan to save battery power. If set true a beacon region using the default GCell UUID will be used.</p>
+<p>If <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> is enabled, the framework will load a list of beacons from the beacons.json file. It will then automatically generate the apporiate beacon regions to monitor and range. If auto-notify is disabled, you will need to supply a one or more regions for the framework to monitor. These can be generated using the GCBeaconRegion class, which extends the <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a>. To generate a beacon region with the default GCell UUID just call the <a href="../Classes/GCBeaconManager.html#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager18gcellDefaultRegionFT_CSo14CLBeaconRegion">gcellDefaultRegion</a> method, otherwise create a <a href="https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLBeaconRegion_class/index.html#//apple_ref/occ/cl/CLBeaconRegion">CoreLocation CLBeaconRegion</a> by specifying a UUID, UUID and Major or UUID, Major and Minor as specified by GCBeaconRegion. Pass these regions to the GCBeaconManager object using addBeaconRegion method. The framework registers these regions and uses them then you start scanning.
+ If no regions are defined - either the reading of the beacons.json file failes OR no region is manually supplied, then the value of the <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager22useDefaultBeaconRegionSb">useDefaultBeaconRegion</a> determines the framework behaviour. If set false, the framework will not scan to save battery power. If set true a beacon region using the default GCell UUID will be used.</p>
 
 <p><a href='#the-beacons-json-file' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='the-beacons-json-file'>The beacons.json File</h3></p>
 
-<p>If using <a href="GCBeaconManager.html#/s:vC24GCBeaconNotificationFWv115GCBeaconManager10autoNotifySb">autoNotify</a> then the project should contain a list of the beacons of interest in JSON format. This allows the developer to just add a file of beacons and the framework will automatically set up beacon regions as appropriate. In addition, each beacon can have an associate list of actions that should be called if certain criteria is met. These criteria are:
+<p>If using <a href="../Classes/GCBeaconManager.html#/s:vC26GCBeaconNotificationFWv1_115GCBeaconManager10autoNotifySb">autoNotify</a> then the project should contain a list of the beacons of interest in JSON format. This allows the developer to just add a file of beacons and the framework will automatically set up beacon regions as appropriate. In addition, each beacon can have an associate list of actions that should be called if certain criteria is met. These criteria are:
  * Signal Strength (proximity) - by tuning the <q>minActionRssi</q> you can tune the approximate distance from the beacon the action to be triggered. A low value (-95) will casuse the action to be triggered as soon as the beacon is observed (approx 20m). BY lowering this value to say -50, you would need to be much closer to the beacon to see the notification.
  * Time Interval - the <q>recurrance</q> value represents the time interval in seconds between subsequent triggers. A value of say 60 means triggers will not occur more than once a minute. This can be a useful way of minimising the numbe rof callbacks received.</p>
 
@@ -505,311 +506,10 @@ The framework will check for - and request as appropriate - authorization to use
                 </li>
               </ul>
             </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/CoreLocation%20locationManager%20delegate%20calls"></a>
-                <a name="//apple_ref/swift/Section/CoreLocation locationManager delegate calls" class="dashAnchor"></a>
-                <a href="#/CoreLocation%20locationManager%20delegate%20calls">
-                  <h3 class="section-name">CoreLocation locationManager delegate calls</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager15didRangeBeaconsGSaCSo8CLBeacon_8inRegionCSo14CLBeaconRegion_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didRangeBeacons:inRegion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager15didRangeBeaconsGSaCSo8CLBeacon_8inRegionCSo14CLBeaconRegion_T_">locationManager(_:didRangeBeacons:inRegion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didRangeBeacons callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didRangeBeacons</span> <span class="nv">beacons</span><span class="p">:</span> <span class="p">[</span><span class="kt">CLBeacon</span><span class="p">],</span> <span class="n">inRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager17didDetermineStateOSC13CLRegionState9forRegionCSo8CLRegion_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didDetermineState:forRegion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager17didDetermineStateOSC13CLRegionState9forRegionCSo8CLRegion_T_">locationManager(_:didDetermineState:forRegion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didDetermineState callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didDetermineState</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">CLRegionState</span><span class="p">,</span> <span class="n">forRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLRegion</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager27didStartMonitoringForRegionCSo8CLRegion_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didStartMonitoringForRegion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager27didStartMonitoringForRegionCSo8CLRegion_T_">locationManager(_:didStartMonitoringForRegion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didStartMonitoringForRegion callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didStartMonitoringForRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLRegion</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager16didFailWithErrorCSo7NSError_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didFailWithError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager16didFailWithErrorCSo7NSError_T_">locationManager(_:didFailWithError:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didFailWithError callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager26monitoringDidFailForRegionGSqCSo8CLRegion_9withErrorCSo7NSError_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:monitoringDidFailForRegion:withError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager26monitoringDidFailForRegionGSqCSo8CLRegion_9withErrorCSo7NSError_T_">locationManager(_:monitoringDidFailForRegion:withError:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager monitoringDidFailForRegion callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">monitoringDidFailForRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLRegion</span><span class="p">?,</span> <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager30rangingBeaconsDidFailForRegionCSo14CLBeaconRegion9withErrorCSo7NSError_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:rangingBeaconsDidFailForRegion:withError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager30rangingBeaconsDidFailForRegionCSo14CLBeaconRegion9withErrorCSo7NSError_T_">locationManager(_:rangingBeaconsDidFailForRegion:withError:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager rangingDidFailForRegion callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">rangingBeaconsDidFailForRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLBeaconRegion</span><span class="p">,</span> <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager14didEnterRegionCSo8CLRegion_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didEnterRegion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager14didEnterRegionCSo8CLRegion_T_">locationManager(_:didEnterRegion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didEnterRegion callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didEnterRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLRegion</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager13didExitRegionCSo8CLRegion_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didExitRegion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager13didExitRegionCSo8CLRegion_T_">locationManager(_:didExitRegion:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CoreLocation locationManager didExitRegion callback</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didExitRegion</span> <span class="nv">region</span><span class="p">:</span> <span class="kt">CLRegion</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Checking%20BLE%20and%20Location%20Services%20Status%20on%20the%20%20device"></a>
-                <a name="//apple_ref/swift/Section/Checking BLE and Location Services Status on the  device" class="dashAnchor"></a>
-                <a href="#/Checking%20BLE%20and%20Location%20Services%20Status%20on%20the%20%20device">
-                  <h3 class="section-name">Checking BLE and Location Services Status on the  device</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_"></a>
-                    <a name="//apple_ref/swift/Method/locationManager(_:didChangeAuthorizationStatus:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager15locationManagerFTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_">locationManager(_:didChangeAuthorizationStatus:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This function checks the Location Services Authorsation status</p>
-
-<p><a href='#warning' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='warning'>Warning</h4></p>
-
-<p>If Location Services is not Authorised no iBeacons will be found
-Always permission needs to be grantedto allow background monitoring</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt">CLLocationManager</span><span class="p">,</span> <span class="n">didChangeAuthorizationStatus</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">CLAuthorizationStatus</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager31peripheralManagerDidUpdateStateFCSo19CBPeripheralManagerT_"></a>
-                    <a name="//apple_ref/swift/Method/peripheralManagerDidUpdateState(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC26GCBeaconNotificationFWv1_115GCBeaconManager31peripheralManagerDidUpdateStateFCSo19CBPeripheralManagerT_">peripheralManagerDidUpdateState(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This function monitors the state of the Bluetooth on the device. Call back from CoreBluetooth Periphery Manager.</p>
-
-<p><a href='#warning' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='warning'>Warning</h4></p>
-
-<p>Bluetooth Low Energy needs to be ON to search for iBeacons</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peripheralManagerDidUpdateState</span><span class="p">(</span><span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheralManager</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-06)</p>
+          <p>&copy; 2016 <a class="link" href="http://www.dp-a.co.uk/" target="_blank" rel="external">David Pugh, G24 Power</a>. All rights reserved. (Last updated: 2016-07-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
