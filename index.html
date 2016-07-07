@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Gcellnotificationfw ios by david-pugh-gcell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Gcellnotificationfw ios</h1>
+      <h2 class="project-tagline">Example Swift code using the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons.</h2>
+      <a href="https://github.com/david-pugh-gcell/GCellNotificationFW_iOS" class="btn">View on GitHub</a>
+      <a href="https://github.com/david-pugh-gcell/GCellNotificationFW_iOS/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/david-pugh-gcell/GCellNotificationFW_iOS/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="gcellnotificationfw-for-ios" class="anchor" href="#gcellnotificationfw-for-ios" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GCellNotificationFW for iOS</h1>
+
+<p>This project is an example XCode project that uses the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons. It is written in Swift (XCode 7.3).</p>
+
+<p>For more information about iBeacons, potential applications, the Framework and other software support such as platforms please contact us at <a href="www.ibeacon.solar">GCell ibeacon.solar</a>.</p>
+
+<p>Latest version: v1_1 (06 July 2016)</p>
+
+<h2>
+<a id="full-documentation" class="anchor" href="#full-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Full Documentation</h2>
+
+<p>For full documentation please see the repository <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/david-pugh-gcell/GCellNotificationFW_iOS/master/docs/Classes/GCBeaconManager.html">docs</a>.</p>
+
+<h3>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h3>
+
+<p>This is an example XCode iOS app written in Swift that uses the GCellNotificationFW Cocoa Touch Framework. This framework allows the developer to quickly and easily integrate iBeacon proximity awareness into their app with the minimal of code. It can be used to return any nearby ranged iBeacons in foreground and background modes, or can be configured to call custom actions within the app when the beacon signal strength is greater than a certain figure and a defined ammount of time has passed. The Framework automatically manages permissions, detecting Bluetooth state and manages Beacon Regions. </p>
+
+<h3>
+<a id="using-the-framework" class="anchor" href="#using-the-framework" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using the Framework</h3>
+
+<p>Importing the Framework into your XCode Project
+1. Drag the GCellNotificationFWv1_1 framework into your XCode Project
+2. Click on your project target -&gt;General and also add the framework to the Embedded Binaries
+3. Clean and rebuild the project - the classes in the framework should now be avilable to use</p>
+
+<h4>
+<a id="setting-up-your-project-to-work-with-ibeacons" class="anchor" href="#setting-up-your-project-to-work-with-ibeacons" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting up your Project to work with iBeacons</h4>
+
+<p>We need to add a few settings to your project to enable it to successfully see iBeacons. </p>
+
+<ol>
+<li>Open the info.plist file and add an entry for <i>NSLocationAlwaysUsageDescription</i>. This is shown when the app asks the user to have permissions to use location services to scan for nearby beacons. Add a sensible string that informs the user what we need the permissions for, e.g., "This app needs access to your location to send you relevant notifications and offers."</li>
+<li>Click on the Project -&gt; Targets - Project Target and select the Capablities option. Scroll down and enable <i>Background Modes</i>. Click on to select the <i> Uses Bluetooth LE accessory</i> checkbox. These allow the app to search for iBeacons using Bluetooth Low Energy when the app is in the background. </li>
+</ol>
+
+<p><strong>Your app is now ready to scan for iBeacons!</strong> </p>
+
+<h4>
+<a id="telling-the-app-what-to-search-for" class="anchor" href="#telling-the-app-what-to-search-for" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Telling the app what to Search for</h4>
+
+<p>There are two ways in which the framework can be used - either configured to operate like the standard iOS iBeacon framework in CoreLocation, or using a 'AutoNotify' option. This auto notify options allows the user to easily supply a list of beacons in JSON format, and associate actions that get called when the beacon is ranged. The user can also adjust the signal strength and timings of when these actions are triggered.</p>
+
+<h4>
+<a id="using-auto-notify" class="anchor" href="#using-auto-notify" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using Auto-notify</h4>
+
+<p>Firstly, create a list of which beacons you want to scan for, along with any actions and store them in the following JSON file. The file should be called <strong>beacons.json</strong> and included in your project. </p>
+
+<ul>
+<li>The <strong>actionName</strong> is the string that is called when the action is triggered</li>
+<li>The <strong>minActionRssi</strong> determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number the closer you will be to the beacon, e.g., -90dB would be approx 20m and -40dB would be 5m). </li>
+<li>The <strong>reccurance</strong> value is the time in seconds between subsequent triggers. E.g., a value of 300 would mean the time between multiple actionName triggers would be 5 minutes (300 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. </li>
+</ul>
+
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>beacons<span class="pl-pds">"</span></span>:[
+               {
+               <span class="pl-s"><span class="pl-pds">"</span>comment<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Example 1<span class="pl-pds">"</span></span>,
+               <span class="pl-s"><span class="pl-pds">"</span>UUID<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>A36AD2B5-0736-43FB-8572-63DB53886FF3<span class="pl-pds">"</span></span>,
+               <span class="pl-s"><span class="pl-pds">"</span>major<span class="pl-pds">"</span></span>:<span class="pl-c1">200</span>,
+               <span class="pl-s"><span class="pl-pds">"</span>minor<span class="pl-pds">"</span></span>:<span class="pl-c1">108</span>,
+               <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>:   [
+                             {
+                             <span class="pl-s"><span class="pl-pds">"</span>actionName<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>custom1<span class="pl-pds">"</span></span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>minActionRssi<span class="pl-pds">"</span></span>: <span class="pl-c1">-55</span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>recurrance<span class="pl-pds">"</span></span>: <span class="pl-c1">5</span>
+                             },
+                             {
+                             <span class="pl-s"><span class="pl-pds">"</span>actionName<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>custom3<span class="pl-pds">"</span></span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>minActionRssi<span class="pl-pds">"</span></span>: <span class="pl-c1">-55</span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>recurrance<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
+                             }
+
+                             ]
+               },
+               {
+               <span class="pl-s"><span class="pl-pds">"</span>comment<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Example 2<span class="pl-pds">"</span></span>,
+               <span class="pl-s"><span class="pl-pds">"</span>UUID<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>96530d4d-09af-4159-b99e-951a5e826584<span class="pl-pds">"</span></span>,
+               <span class="pl-s"><span class="pl-pds">"</span>major<span class="pl-pds">"</span></span>:<span class="pl-c1">100</span>,
+               <span class="pl-s"><span class="pl-pds">"</span>minor<span class="pl-pds">"</span></span>:<span class="pl-c1">1</span>,
+               <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>:   [
+                             {
+                             <span class="pl-s"><span class="pl-pds">"</span>actionName<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>custom2<span class="pl-pds">"</span></span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>minActionRssi<span class="pl-pds">"</span></span>: <span class="pl-c1">-55</span>,
+                             <span class="pl-s"><span class="pl-pds">"</span>recurrance<span class="pl-pds">"</span></span>: <span class="pl-c1">20</span>
+                             }
+                             ]
+               }
+
+               ]
+}</pre></div>
+
+<h4>
+<a id="starting-the-scan" class="anchor" href="#starting-the-scan" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starting the Scan</h4>
+
+<p>Firstly declare a GCBeaconManager as an instance variable.</p>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">var</span> beaconManager <span class="pl-k">=</span> GCBeaconManager()</pre></div>
+
+<p>Ensure that the class adopts the GCBeaconManagerDelegate protocol in its definition. Then set the delegate, switch on/off debugging, set autonotify to true and start scanning. </p>
+
+<div class="highlight highlight-source-swift"><pre>beaconManager<span class="pl-k">.</span>debug <span class="pl-k">=</span> <span class="pl-c1">true</span>
+beaconManager<span class="pl-k">.</span>delegate <span class="pl-k">=</span> <span class="pl-k">self</span>
+beaconManager<span class="pl-k">.</span>autoNotify <span class="pl-k">=</span> <span class="pl-c1">true</span>
+beaconManager<span class="pl-k">.</span>useDefaultBeaconRegion <span class="pl-k">=</span> <span class="pl-c1">false</span>
+beaconManager<span class="pl-k">.</span>startScanningForBeacons()</pre></div>
+
+<p>The app will chack permissions and settings, load up the beacons data, autoconfigure beacon regions and start scanning. It will return triggered actions and any error feedback messages through the GCBeaconManagerDelegate protocol.</p>
+
+<div class="highlight highlight-source-swift"><pre> <span class="pl-c">//You can either react to the list of beacons that are in the notification list and in range, or just the list of actions associated with those beacons</span>
+
+    <span class="pl-c">//These are the beacons that were ranged as part of the notification system</span>
+    <span class="pl-k">func</span> <span class="pl-en">beaconManager</span>(beaconManager: GCBeaconManager, <span class="pl-en">didRangeNotificationBeacons</span> <span class="pl-smi">beacons</span>: [GCBeacon]){
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Ranged the following listed beacons:<span class="pl-pds">"</span></span>)
+        <span class="pl-k">for</span> b <span class="pl-k">in</span> beacons{
+            <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>major</span><span class="pl-pse">)</span>/<span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>minor</span><span class="pl-pse">)</span> with <span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>lastKnownRssi</span><span class="pl-pse">)</span>dB at <span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>lastSeen</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+        }
+
+    }
+
+    <span class="pl-c">//These are the custom action calls as part of the notification system</span>
+    <span class="pl-k">func</span> <span class="pl-en">beaconManager</span>(beaconManager: GCBeaconManager, <span class="pl-en">didReceiveNotificationActions</span> <span class="pl-smi">actions</span>: <span class="pl-c1">Set</span><span class="pl-k">&lt;</span>GCBeaconAction<span class="pl-k">&gt;</span>) {
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Actions Received:<span class="pl-pds">"</span></span>)
+        <span class="pl-k">for</span> a <span class="pl-k">in</span> actions{
+            <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pse">\(</span><span class="pl-s1">a<span class="pl-k">.</span>actionName</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+        }
+    }
+
+    <span class="pl-c">//Handle any feedback received from framework</span>
+     <span class="pl-k">func</span> <span class="pl-en">beaconManager</span>(beaconManager: GCBeaconManager, errorCode: <span class="pl-c1">Int</span>, <span class="pl-en">with</span> <span class="pl-smi">errorMessage</span>: <span class="pl-c1">String</span>) {
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Error! <span class="pl-pse">\(</span><span class="pl-s1">error</span><span class="pl-pse">)</span> - <span class="pl-pse">\(</span><span class="pl-s1">errorDesc</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+    }
+</pre></div>
+
+<h4>
+<a id="using-standard-scan" class="anchor" href="#using-standard-scan" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using Standard Scan</h4>
+
+<p>This sets the app to run like a normal iOS project using CoreLocation, except permissions and Bluetooth status is handled automatically. You can also use the default GCell UUID without having to enter any UUID details. Set up the instance variable and protocol adoption as above, and also remember to set the delegate. Set autoNotify to false and then set up the Beacon Regions you wish to monitor and add them to the beaconManager. </p>
+
+<div class="highlight highlight-source-swift"><pre> <span class="pl-c">//set the auto notify function OFF</span>
+                beaconManager<span class="pl-k">.</span>autoNotify <span class="pl-k">=</span> <span class="pl-c1">false</span>
+                beaconManager<span class="pl-k">.</span>debug <span class="pl-k">=</span> <span class="pl-c1">true</span>
+                beaconManager<span class="pl-k">.</span>delegate <span class="pl-k">=</span> <span class="pl-k">self</span>
+
+                <span class="pl-c">//Set up beacon regions</span>
+                <span class="pl-k">let</span> uuidString <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>A36AD2B5-0736-43FB-8572-63DB53886FF3<span class="pl-pds">"</span></span>
+                <span class="pl-k">let</span> beaconIdentifier <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>iBeaconModules.us<span class="pl-pds">"</span></span>
+                <span class="pl-k">let</span> beaconUUID:NSUUID <span class="pl-k">=</span> NSUUID(UUIDString: uuidString)<span class="pl-k">!</span>
+                <span class="pl-k">let</span> beaconRegion:CLBeaconRegion <span class="pl-k">=</span> CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
+
+                <span class="pl-c">//Add the regions</span>
+                beaconManager<span class="pl-k">.</span>addBeaconRegion(beaconRegion) <span class="pl-c">//Leave this out to use the default GCell UUID as the beacon region</span>
+
+                <span class="pl-c">//Start Scanning</span>
+                beaconManager<span class="pl-k">.</span>startScanningForBeacons()</pre></div>
+
+<p>Respond to the beacons ranged delegate call back. </p>
+
+<div class="highlight highlight-source-swift"><pre>    <span class="pl-c">//Handle any feedback received from framework</span>
+    <span class="pl-k">func</span> <span class="pl-en">beaconManager</span>(beaconManager: GCBeaconManager, errorCode: <span class="pl-c1">Int</span>, <span class="pl-en">with</span> <span class="pl-smi">errorMessage</span>: <span class="pl-c1">String</span>) {
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Error! <span class="pl-pse">\(</span><span class="pl-s1">error</span><span class="pl-pse">)</span> - <span class="pl-pse">\(</span><span class="pl-s1">errorDesc</span><span class="pl-pse">)</span><span class="pl-pds">"</span></span>)
+    }
+
+
+    <span class="pl-c">//Handel didRanging calls</span>
+    <span class="pl-k">func</span> <span class="pl-en">beaconManager</span>(beaconManager: GCBeaconManager, <span class="pl-en">didRangeBeacons</span> <span class="pl-smi">beacons</span>: [CLBeacon], <span class="pl-en">inRegion</span> <span class="pl-smi">region</span>: CLBeaconRegion) {
+            <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Ranged the following beacons in region <span class="pl-pse">\(</span><span class="pl-s1">region</span><span class="pl-pse">)</span>:<span class="pl-pds">"</span></span>)
+            <span class="pl-k">for</span> b <span class="pl-k">in</span> beacons{
+                <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>major</span><span class="pl-pse">)</span>/<span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>minor</span><span class="pl-pse">)</span> with <span class="pl-pse">\(</span><span class="pl-s1">b<span class="pl-k">.</span>rssi</span><span class="pl-pse">)</span>dB<span class="pl-pds">"</span></span>)
+            }
+    }
+</pre></div>
+
+<h3>
+<a id="background-mode" class="anchor" href="#background-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background Mode</h3>
+
+<p>The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this. The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/david-pugh-gcell/GCellNotificationFW_iOS">Gcellnotificationfw ios</a> is maintained by <a href="https://github.com/david-pugh-gcell">david-pugh-gcell</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
