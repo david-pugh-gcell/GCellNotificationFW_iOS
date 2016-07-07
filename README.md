@@ -1,7 +1,7 @@
 # GCellNotificationFW for iOS
 This project is an example XCode project that uses the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons. It is written in Swift (XCode 7.3).
 
-For more information about iBeacons, potential applications, the Framework and other software support such as platforms please contact us at [GCell ibeacon.solar](www.ibeacon.solar).
+For more information about iBeacons, potential applications, the Framework and other software support such as platforms please contact us at [GCell ibeacon.solar](http://www.ibeacon.solar).
 
 Latest version: v1_1 (06 July 2016)
 
