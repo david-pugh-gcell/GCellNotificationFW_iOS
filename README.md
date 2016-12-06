@@ -1,5 +1,5 @@
 # GCellNotificationFW for iOS
-This project is an example XCode project that uses the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons. It is written in Swift (XCode 7.3).
+This project is an example XCode project that uses the GCell iBeacon Notification FW to easily set up and detect proximity to nearby iBeacons. It is written in Swift and tested using XCode 7.3 for iOS8 +.
 
 For more information about iBeacons, potential applications, the Framework and other software support such as platforms please contact us at [GCell ibeacon.solar](http://www.ibeacon.solar).
 
@@ -23,7 +23,7 @@ Importing the Framework into your XCode Project
 We need to add a few settings to your project to enable it to successfully see iBeacons. 
 
 1. Open the info.plist file and add an entry for <i>NSLocationAlwaysUsageDescription</i>. This is shown when the app asks the user to have permissions to use location services to scan for nearby beacons. Add a sensible string that informs the user what we need the permissions for, e.g., "This app needs access to your location to send you relevant notifications and offers."
-2. Click on the Project -> Targets - Project Target and select the Capablities option. Scroll down and enable <i>Background Modes</i>. Click on to select the <i> Uses Bluetooth LE accessory</i> checkbox. These allow the app to search for iBeacons using Bluetooth Low Energy when the app is in the background. 
+2. Click on the Project -> Targets - Project Target and select the Capablities option. Scroll down and enable <i>Background Modes</i>. This allow the app to search for iBeacons using Bluetooth Low Energy when the app is in the background. 
 
 **Your app is now ready to scan for iBeacons!** 
 
@@ -31,7 +31,7 @@ We need to add a few settings to your project to enable it to successfully see i
 There are two ways in which the framework can be used - either configured to operate like the standard iOS iBeacon framework in CoreLocation, or using a 'AutoNotify' option. This auto notify options allows the user to easily supply a list of beacons in JSON format, and associate actions that get called when the beacon is ranged. The user can also adjust the signal strength and timings of when these actions are triggered.
 
 <h4>Using Auto-notify</h4>
-Firstly, create a list of which beacons you want to scan for, along with any actions and store them in the following JSON file. The file should be called **beacons.json** and included in your project. 
+Firstly, create a list of which beacons you want to scan for, along with any actions and store them in the following JSON file. The file should be called **beacons.json** and included in your project. Just drop it in your XCode project folder at the same level as the .xcodeproj file.
 
 * The **actionName** is the string that is called when the action is triggered
 * The **minActionRssi** determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number the closer you will be to the beacon, e.g., -90dB would be approx 20m and -40dB would be 5m). 
@@ -84,7 +84,7 @@ Firstly declare a GCBeaconManager as an instance variable.
 var beaconManager = GCBeaconManager()
 ```
 
-Ensure that the class adopts the GCBeaconManagerDelegate protocol in its definition. Then set the delegate, switch on/off debugging, set autonotify to true and start scanning. 
+Ensure that the class adopts the GCBeaconManagerDelegate protocol in its definition. Then set the delegate, switch on/off debugging, set auto-notify to true and start scanning. 
 
 ```Swift
 beaconManager.debug = true
@@ -165,4 +165,4 @@ Respond to the beacons ranged delegate call back.
 ```
 
 <h3>Background Mode</h3>
-The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss this. The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
+The framework will follow Apple guidelines for working in background mode. The ranging function of the app is extended to improve accuracy once a beacon region is detected, but this is only for a short time to minimise battery use. It should be enough for many applications. This Framework is not intended to be used for a navigation based app requiring continal ranging whilst in background mode - if you require this please contact us to discuss the details. The app doesnt automatically deliver local notifications, just the callback to say the beacon has been ranged/action has been trigger. It is left to the developer to implement any notifications to the user. Again - any queries or requests please do not hesitate to contact us to see how we can help.
