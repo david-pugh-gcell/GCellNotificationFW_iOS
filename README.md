@@ -15,9 +15,9 @@ This is an example XCode iOS app written in Swift that uses the GCellNotificatio
 <h3>Using the Framework</h3>
 
 Importing the Framework into your XCode Project
-1. Drag the GCellNotificationFWv1_1 framework into your XCode Project
-2. Click on your project target ->General and also add the framework to the Embedded Binaries
-3. Clean and rebuild the project - the classes in the framework should now be avilable to use
+1. Drag the GCellNotificationFWv1_1 framework into your XCode Project.
+2. Click on your project target ->General and also add the framework to the Embedded Binaries.
+3. Clean and rebuild the project - the classes in the framework should now be avilable to use.
 
 <h4>Setting up your Project to work with iBeacons</h4>
 We need to add a few settings to your project to enable it to successfully see iBeacons. 
