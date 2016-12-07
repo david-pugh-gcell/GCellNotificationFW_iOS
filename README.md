@@ -35,7 +35,7 @@ There are two ways in which the framework can be used - either configured to ope
 Firstly, create a list of which beacons you want to scan for, along with any actions and store them in the following JSON file. The file should be called **beacons.json** and included in your project. Just drop it in your XCode project folder at the same level as the .xcodeproj file.
 
 * The **actionName** is the string that is called when the action is triggered
-* The **minActionRssi** determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number the closer you will be to the beacon, e.g., -90dB would be approx 20m and -40dB would be 5m). 
+* The **minActionRssi** determines the min Signal Strength (RSSI) that the phone should see before triggering the action (the higher the number - that is the closer to 0 - the closer you will be to the beacon, e.g., -90dB would be approx 20m and -50dB would be approx 1-2m). 
 * The **reccurance** value is the time in seconds between subsequent triggers. E.g., a value of 300 would mean the time between multiple actionName triggers would be 5 minutes (300 seconds). This means we can control the ammount of times a user would be presented with information or notifications, improving user experience. 
 
 ```json
